@@ -1,0 +1,23 @@
+[package]
+name = "rift_insight"
+description = "A third party API library for League of Legends."
+version = "0.0.1"
+edition = "2018"
+authors = ["Tristan Farkas <tristan@tristanfarkas.se>"]
+categories = ["games", "api-bindings"]
+keywords = ["api", "LCU", "game"]
+license = "MIT"
+license-file = "LICENSE"
+repository = "https://github.com/trilleplay/rift_insight"
+documentation = "https://docs.rs/rift_insight"
+readme = "README.md"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4"
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.68"
