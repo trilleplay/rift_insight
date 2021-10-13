@@ -43,13 +43,18 @@ impl RequestClient {
     }
 
     // Perform a POST request, keep in mind that `path` should not start with a /, since the library already puts it in there.
-    pub async fn post(&mut self, path: &str, body: AnyValue) -> Result<AnyValue, RiftApiRequestError> {
-        return self.request(Methods::Post, path, Some(body)).await;
+    pub async fn post(&mut self, path: &str, body: Option<AnyValue>) -> Result<AnyValue, RiftApiRequestError> {
+        return self.request(Methods::Post, path, body).await;
+    }
+
+    // Perform a PUT request, keep in mind that `path` should not start with a /, since the library already puts it in there.
+    pub async fn put(&mut self, path: &str, body: Option<AnyValue>) -> Result<AnyValue, RiftApiRequestError> {
+        return self.request(Methods::Put, path, body).await;
     }
 
     // Perform a DELETE request, keep in mind that `path` should not start with a /, since the library already puts it in there.
-    pub async fn delete(&mut self, path: &str, body: AnyValue) -> Result<AnyValue, RiftApiRequestError> {
-        return self.request(Methods::Delete, path, Some(body)).await;
+    pub async fn delete(&mut self, path: &str, body: Option<AnyValue>) -> Result<AnyValue, RiftApiRequestError> {
+        return self.request(Methods::Delete, path, body).await;
     }
 
     // Perform a HEAD request, keep in mind that `path` should not start with a /, since the library already puts it in there.

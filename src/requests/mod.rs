@@ -9,7 +9,8 @@ pub enum Methods {
     Get,
     Post,
     Delete,
-    Head
+    Head,
+    Put
 }
 
 impl Methods {
@@ -19,6 +20,7 @@ impl Methods {
             Self::Post => ReqwestMethod::POST,
             Self::Delete => ReqwestMethod::DELETE,
             Self::Head => ReqwestMethod::PATCH,
+            Self::Put => ReqwestMethod::PUT
         }
     }
 }

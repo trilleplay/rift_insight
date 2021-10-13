@@ -1,7 +1,7 @@
 [package]
 name = "rift_insight"
 description = "A third party API library for League of Legends."
-version = "0.0.1"
+version = "0.0.2"
 edition = "2018"
 authors = ["Tristan Farkas <tristan@tristanfarkas.se>"]
 categories = ["games", "api-bindings"]
