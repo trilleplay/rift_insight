@@ -7,7 +7,7 @@ pub struct LeagueClient {
 }
 
 // Gets a LeagueClient, you should make sure that League of Legends is active on the computer before calling this method. 
-// If League of Legends exits during your applications lifetime, you should to get a new LeagueClient, since each LeagueClient is unique to its assigned proccess. This is however only worth caring about if you're using the League Client API features.
+// If League of Legends exits during your applications lifetime, you should to get a new LeagueClient, since each LeagueClient is unique to its assigned process. This is however only worth caring about if you're using the League Client API features.
 pub fn get_league_client() -> Result<LeagueClient, RiftInitializationError> {
     let lockfile = locate::lock_file::get_lockfile();
     match lockfile {

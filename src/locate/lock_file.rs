@@ -27,10 +27,10 @@ fn find_lockfile_location() -> Result<String, RiftInitializationError> {
 pub fn get_lockfile() -> Result<LockfileContents, RiftInitializationError> {
     if cfg!(windows) {
         let location = find_lockfile_location();
-        match location {
+        return match location {
             Ok(l) => {
                 let mut file_path = l.replace("LeagueClientUx.exe", "lockfile").replace("\r", "").replace("\\", "\\\\");
-                    while file_path.ends_with(" ") {
+                while file_path.ends_with(" ") {
                     file_path.pop();
                 }
                 let file = read_to_string(file_path);
@@ -40,16 +40,16 @@ pub fn get_lockfile() -> Result<LockfileContents, RiftInitializationError> {
                         if split.len() != 5 {
                             return Err(RiftInitializationError::GenericLockfile(LockFileError::new(LockfileErrorTypes::LockfileUnexpectedFormat)))
                         }
-                        return Ok(LockfileContents {
+                        Ok(LockfileContents {
                             port: split[2].parse::<u16>().unwrap_or(0),
                             password: split[3].to_string(),
                             protocol: split[4].to_string()
-                        });
+                        })
                     },
-                    Err(e) => {return Err(RiftInitializationError::FailedToOpenLockfile(FailedToOpenLockfileError::new(e)))}
+                    Err(e) => { Err(RiftInitializationError::FailedToOpenLockfile(FailedToOpenLockfileError::new(e))) }
                 }
             }
-            Err(e) => {return Err(e)}
+            Err(e) => { Err(e) }
         }
     } else {
         return Err(RiftInitializationError::UnknownError("Unsupported platform.".to_string()))

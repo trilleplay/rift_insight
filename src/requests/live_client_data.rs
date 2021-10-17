@@ -256,16 +256,16 @@ impl LiveClientData {
         let url = format!("https://127.0.0.1:2999/{}", path);
         debug!("Constructed url for {:?} request: {}", method, url);
         let response = self.http.request(method.as_reqwest(), url).send().await;
-        match response {
+        return match response {
             Ok(r) => {
                 let parsed = r.json::<T>().await;
                 match parsed {
-                    Ok(p) => return Ok(p),
-                    Err(e) => return Err(RiftApiRequestError::new(e)),
-                };
+                    Ok(p) => Ok(p),
+                    Err(e) => Err(RiftApiRequestError::new(e)),
+                }
             }
             Err(e) => {
-                return Err(RiftApiRequestError::new(e));
+                Err(RiftApiRequestError::new(e))
             }
         }
     }
