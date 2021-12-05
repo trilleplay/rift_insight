@@ -7,6 +7,7 @@ use serde::de::DeserializeOwned;
 use serde::Serialize as SerializeDerive;
 use serde::ser::Serialize;
 
+#[derive(Debug, Clone)]
 pub struct RequestClient {
     pub http: Client,
     pub lockfile: LockfileContents

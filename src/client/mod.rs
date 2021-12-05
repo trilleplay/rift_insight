@@ -1,6 +1,7 @@
 use crate::{requests, locate, errors::RiftInitializationError};
 
 // Everything you'll need to use to query the League API can be found within the LeagueClient.
+#[derive(Clone)]
 pub struct LeagueClient {
     pub lcu: requests::lcu::RequestClient,
     pub live: requests::live_client_data::LiveClientData

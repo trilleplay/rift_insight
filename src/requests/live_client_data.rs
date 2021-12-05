@@ -239,6 +239,7 @@ pub struct StatRune {
     raw_description: String,
 }
 
+#[derive(Debug, Clone)]
 pub struct LiveClientData {
     pub http: Client
 }
