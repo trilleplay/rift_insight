@@ -64,8 +64,8 @@ impl RequestClient {
     }
 
     // Perform a HEAD request, keep in mind that `path` should not start with a /, since the library already puts it in there.
-    pub async fn head<T: DeserializeOwned, S: Serialize + Sized>(&mut self, path: &str) -> Result<T, RiftApiRequestError> {
-        return self.request::<T, S>(Methods::Head, path, None).await;
+    pub async fn head<T: DeserializeOwned, S: Serialize + Sized>(&mut self, path: &str, body: Option<S>) -> Result<T, RiftApiRequestError> {
+        return self.request::<T, S>(Methods::Head, path, body).await;
     }
 }
 
